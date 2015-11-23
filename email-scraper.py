@@ -32,15 +32,15 @@ def main():
             out.write("\n")
     
 
-#####################################
-# Name: scrape
-# Parameters:   link - the URL to scrape 
-#               output_file - file name to write emails out to
-#               num - the number of addresses to collect
-#               emails - array containing list of emails
-#               URIs - the list of URIs to crawl
-#####################################
 def scrape(link, output_file, num, emails, URIs):
+	"""
+	scrapes the given link and write out emails to the specified file
+	Parameters:   link - the URL to scrape 
+	              output_file - file name to write emails out to
+	              num - the number of addresses to collect
+	              emails - array containing list of emails
+	              URIs - the list of URIs to crawl
+	"""
     # create the urlparse object containing the given URL
     u = urlparse(link)
 
@@ -102,12 +102,6 @@ def scrape(link, output_file, num, emails, URIs):
         if temp not in emails:
             emails.append(temp)
 
-    #print "========================================================="
-    #for email in emails:
-    #    print email
-    #print len(emails)
-    #print "========================================================="
-
     new_link = 'ERROR' 
     # loop through all URIs in array looking for the current one being parsed
     for i in range(len(URIs)):
@@ -145,52 +139,3 @@ def scrape(link, output_file, num, emails, URIs):
 
 if __name__ == '__main__':
     sys.exit(main())
-
-
-    #print "========================================================="
-    #for uri in URIs:
-    #    print uri
-    #print URIs
-    #print "========================================================="
-
-
-
-
-            # if u.path is URIs[i]:
-            #     new_link = 'http://' + u.netloc + '/' + URIs[i+1]
-            #     if URIs[i+1][0] is not '/':
-            #         if i is not len(URIs):
-            #             print "URIs[i+1][0] = " + URIs[i+1][0]
-            #             new_link = 'http://' + u.netloc + '/' + URIs[i+1]
-            #             break
-            #     else:
-            #         if i is not len(URIs):
-            #             new_link = 'http://' + u.netloc + URIs[i+1]
-            #             break
-            #         else:
-            #             return True
-
-
-
-
-            # and if the URI does not start with '/' create a new link to call scrape from again
-        # else we have the first link (given via command line), and it may not appear on its own page
-        # so it would not appear in the URIs list
-        # else:
-        #     print "else we have the first link"
-        #     # Take first item in URIs list and check to see if the first char is a '/'
-        #     # if not, add one for new link
-        #     if URIs[0][0] is not '/':
-        #         print "the first link in URIs[0] does not have a '/'"
-        #         new_link = 'http://' + u.netloc + '/' + URIs[0]
-        #         break
-        #     else:
-        #         print "the first link does have a '/'"
-        #         new_link = 'http://' + u.netloc + URIs[0]
-        #         break
-
-
-
-        #print "len(URIs) = " + str(len(URIs))
-        #print "u.path = " + u.path + " = URIs[" + str(i) + "] = " + URIs[i]
-        #print "URIs[i] = " + URIs[i]
